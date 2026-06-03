@@ -93,7 +93,6 @@ function toggleSign() {
   }
 }
 
-// PERCENTAGE FUNCTION
 function percentage() {
   if (elResult.textContent === 'Error') return;
 
@@ -101,13 +100,9 @@ function percentage() {
 
   let result;
 
-  // Example:
-  // 200 + 10% => 20
   if (acc !== null && pendingOp) {
     result = (acc * current) / 100;
   } else {
-    // Standalone percentage
-    // 50% => 0.5
     result = current / 100;
   }
 
@@ -267,14 +262,12 @@ function handleAction(action, value) {
   }
 }
 
-// Button events
 keys.forEach(btn => {
   btn.addEventListener('click', () => {
     handleAction(btn.dataset.action, btn.dataset.value);
   });
 });
 
-// Keyboard support
 window.addEventListener('keydown', (e) => {
   const key = e.key;
 
