@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" role="application" aria-label="Calculator">
+    <div class="display" aria-live="polite">
+      <div id="expression" class="expression"></div>
+      <div id="result" class="result">0</div>
+    </div>
+
+    <div class="keys" role="group" aria-label="Calculator keys">
+      <button class="key key-fn" data-action="clear" aria-label="Clear">AC</button>
+      <button class="key key-fn" data-action="backspace" aria-label="Backspace">⌫</button>
+      <button class="key key-op" data-action="operator" data-value="/" aria-label="Divide">÷</button>
+      <button class="key key-op" data-action="operator" data-value="*" aria-label="Multiply">×</button>
+
+      <button class="key" data-action="digit" data-value="7">7</button>
+      <button class="key" data-action="digit" data-value="8">8</button>
+      <button class="key" data-action="digit" data-value="9">9</button>
+      <button class="key key-op" data-action="operator" data-value="-" aria-label="Subtract">−</button>
+
+      <button class="key" data-action="digit" data-value="4">4</button>
+      <button class="key" data-action="digit" data-value="5">5</button>
+      <button class="key" data-action="digit" data-value="6">6</button>
+      <button class="key key-op" data-action="operator" data-value="+" aria-label="Add">+</button>
+
+      <button class="key" data-action="digit" data-value="1">1</button>
+      <button class="key" data-action="digit" data-value="2">2</button>
+      <button class="key" data-action="digit" data-value="3">3</button>
+      <button class="key key-eq" data-action="equals" aria-label="Equals">=</button>
+
+      <button class="key key-zero" data-action="digit" data-value="0">0</button>
+      <button class="key" data-action="dot" aria-label="Decimal">.</button>
+      <button class="key key-op" data-action="toggle-sign" aria-label="Toggle sign">±</button>
+      <button class="key key-fn" data-action="percent" aria-label="Percentage">%</button>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
+
