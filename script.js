@@ -33,7 +33,13 @@ function clearAll() {
 }
 
 function backspace() {
-  if (justEvaluated || waitingForNextOperand) return;
+  if (justEvaluated) return;
+
+  if (waitingForNextOperand) {
+    setResult('0');
+    waitingForNextOperand = false;
+    return;
+  }
 
   if (input.length <= 1 || (input.length === 2 && input.startsWith('-'))) {
     setResult('0');
@@ -84,6 +90,12 @@ function appendDot() {
 }
 
 function toggleSign() {
+  if (waitingForNextOperand) {
+    setResult('-0');
+    waitingForNextOperand = false;
+    return;
+  }
+
   if (input === '0') return;
 
   if (input.startsWith('-')) {
@@ -93,16 +105,27 @@ function toggleSign() {
   }
 }
 
+// PERCENTAGE FUNCTION
 function percentage() {
   if (elResult.textContent === 'Error') return;
+
+  if (waitingForNextOperand) {
+    setResult('0');
+    waitingForNextOperand = false;
+    return;
+  }
 
   const current = getInputNumber();
 
   let result;
 
+  // Example:
+  // 200 + 10% => 20
   if (acc !== null && pendingOp) {
     result = (acc * current) / 100;
   } else {
+    // Standalone percentage
+    // 50% => 0.5
     result = current / 100;
   }
 
@@ -262,12 +285,14 @@ function handleAction(action, value) {
   }
 }
 
+// Button events
 keys.forEach(btn => {
   btn.addEventListener('click', () => {
     handleAction(btn.dataset.action, btn.dataset.value);
   });
 });
 
+// Keyboard support
 window.addEventListener('keydown', (e) => {
   const key = e.key;
 
